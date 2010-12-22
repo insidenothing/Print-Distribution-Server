@@ -50,8 +50,8 @@ processIP('/printDirect/192.168.100.190','192.168.100.190');
 
 
 error_log("[".date('h:iA n/j/y')."]  [scan complete] \n", 3, '/printDirect/logs/cron.log');
-$last_line = system('rm -f *.ps', $retval);
-$last_line = system('rm -f *.pcl', $retval);
+$last_line = system('rm -f /printDirect/192.168.100.190/*.ps', $retval);
+$last_line = system('rm -f /printDirect/192.168.100.190/*.pcl', $retval);
 error_log("[".date('h:iA n/j/y')."]  [.ps / .pcl cleared] \n", 3, '/printDirect/logs/cron.log');
 
 ?>
