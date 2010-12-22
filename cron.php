@@ -11,7 +11,7 @@ if (ftp_chdir($conn_id, 'PORT1')) {
 error_log(date('r')." WARNING: Couldn't change ftp directory for $ip $file. \n", 3, '/printDirect/logs/printer.log');
 }
 if (ftp_put($conn_id, $remote_file, $file, FTP_BINARY)) {
-$last_line = system('rm -f '.$file, $retval);
+//$last_line = system('rm -f '.$file, $retval);
 error_log("[".date('h:iA n/j/y')."]  [printed] [$ip] [$file] \n", 3, '/printDirect/logs/cron.log');
 //error_log(date('r')." NOTICE: $log printed successfully. \n", 3, '/logs/printer.log');
 } else {
@@ -50,6 +50,8 @@ processIP('/printDirect/192.168.100.190','192.168.100.190');
 
 
 error_log("[".date('h:iA n/j/y')."]  [scan complete] \n", 3, '/printDirect/logs/cron.log');
-
+$last_line = system('rm -f *.ps', $retval);
+$last_line = system('rm -f *.pcl', $retval);
+error_log("[".date('h:iA n/j/y')."]  [.ps / .pcl cleared] \n", 3, '/printDirect/logs/cron.log');
 
 ?>
