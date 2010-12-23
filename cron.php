@@ -5,10 +5,11 @@ error_log("[".date('h:iA n/j/y')."]  [scanning folders] \n", 3, '/printDirect/lo
 
 function pushProcess($file,$remote_file,$ip){
 $conn_id = ftp_connect($ip);
-$login_result = ftp_login($conn_id, 'intranet', 'direct');
-if (ftp_chdir($conn_id, 'PORT1')) {
+$login_result = ftp_login($conn_id, 'alpha', 'beta');
+$remDir = "PORT1";
+if (ftp_chdir($conn_id, $remDir)) {
 } else {
-error_log(date('r')." WARNING: Couldn't change ftp directory for $ip $file. \n", 3, '/printDirect/logs/printer.log');
+error_log(date('r')." WARNING: ($ip) Couldn't change ftp directory ($remDir) for ($file). \n", 3, '/printDirect/logs/printer.log');
 }
 if (ftp_put($conn_id, $remote_file, $file, FTP_BINARY)) {
 //$last_line = system('rm -f '.$file, $retval);
