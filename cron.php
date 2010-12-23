@@ -30,7 +30,7 @@ function processIP($directory,$ip){
     while ($file = readdir($handler)) {
         // if $file isn't this directory or its parent,
         // add it to the results array
-        if ($file != '.' && $file != '..' && $file != 'CVS')
+        if ($file != '.' && $file != '..'){
           //pushProcess($directory.'/'.$file,$file,$ip); 
           //MDWS Printers
           pushProcess($directory.'/'.$file,$file,'192.168.100.190'); 
@@ -48,7 +48,7 @@ function processIP($directory,$ip){
       //    pushProcess($directory.'/'.$file,$file,'192.168.1.190'); 
 
 error_log("[".date('h:iA n/j/y')."]  [processing] [$directory] [$file] \n", 3, '/printDirect/logs/cron.log');
-
+}
     }
     // tidy up: close the handler
     closedir($handler);
