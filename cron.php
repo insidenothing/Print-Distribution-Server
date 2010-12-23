@@ -39,13 +39,13 @@ function processIP($directory,$ip){
          // pushProcess($directory.'/'.$file,$file,'192.168.100.149'); 
          // pushProcess($directory.'/'.$file,$file,'192.168.100.164'); 
           //HWA Printers
-          pushProcess($directory.'/'.$file,$file,'192.168.1.156'); 
-          pushProcess($directory.'/'.$file,$file,'192.168.1.159'); 
+         // pushProcess($directory.'/'.$file,$file,'192.168.1.156'); 
+       //   pushProcess($directory.'/'.$file,$file,'192.168.1.159'); 
          // pushProcess($directory.'/'.$file,$file,'192.168.1.152'); 
          // pushProcess($directory.'/'.$file,$file,'192.168.1.154'); 
-          pushProcess($directory.'/'.$file,$file,'192.168.1.161'); 
+      //    pushProcess($directory.'/'.$file,$file,'192.168.1.161'); 
          // pushProcess($directory.'/'.$file,$file,'192.168.1.163'); 
-          pushProcess($directory.'/'.$file,$file,'192.168.1.190'); 
+      //    pushProcess($directory.'/'.$file,$file,'192.168.1.190'); 
 
 error_log("[".date('h:iA n/j/y')."]  [processing] [$directory] [$file] \n", 3, '/printDirect/logs/cron.log');
 
