@@ -9,14 +9,14 @@ $login_result = ftp_login($conn_id, 'alpha', 'beta');
 $remDir = "PORT1";
 if (ftp_chdir($conn_id, $remDir)) {
 } else {
-error_log(date('r')." WARNING: ($ip) Couldn't change ftp directory ($remDir) for ($file). \n", 3, '/printDirect/logs/printer.log');
+error_log(date('r')." WARNING: ($ip) Couldn't change ftp directory ($remDir) for ($file). \n", 3, 'cron.log');
 }
 if (ftp_put($conn_id, $remote_file, $file, FTP_BINARY)) {
 //$last_line = system('rm -f '.$file, $retval);
 error_log("[".date('h:iA n/j/y')."]  [printed] [$ip] [$file] \n", 3, '/printDirect/logs/cron.log');
 //error_log(date('r')." NOTICE: $log printed successfully. \n", 3, '/logs/printer.log');
 } else {
-error_log(date('r')." ERROR: There was a problem while uploading $ip $file. \n", 3, '/printDirect/logs/printer.log');
+error_log(date('r')." ERROR: There was a problem while uploading $ip $file. \n", 3, 'cron.log');
 }
 ftp_close($conn_id);
 }
@@ -47,7 +47,7 @@ function processIP($directory,$ip){
          // pushProcess($directory.'/'.$file,$file,'192.168.1.163'); 
          pushProcess($directory.'/'.$file,$file,'192.168.1.190'); //ron
 
-error_log("[".date('h:iA n/j/y')."]  [processing] [$directory] [$file] \n", 3, '/printDirect/logs/cron.log');
+error_log("[".date('h:iA n/j/y')."]  [processing] [$directory] [$file] \n", 3, 'cron.log');
 }
     }
     // tidy up: close the handler
@@ -60,9 +60,9 @@ processIP('/printDirect/192.168.100.190','192.168.100.190');
 //processIP('/printDirect/192.168.100.153','192.168.100.153');
 
 
-error_log("[".date('h:iA n/j/y')."]  [scan complete] \n", 3, '/printDirect/logs/cron.log');
+error_log("[".date('h:iA n/j/y')."]  [scan complete] \n", 3, 'cron.log');
 $last_line = system('rm -f /printDirect/192.168.100.190/*.ps', $retval);
 $last_line = system('rm -f /printDirect/192.168.100.190/*.pcl', $retval);
-error_log("[".date('h:iA n/j/y')."]  [.ps / .pcl cleared] \n", 3, '/printDirect/logs/cron.log');
+error_log("[".date('h:iA n/j/y')."]  [.ps / .pcl cleared] \n", 3, 'cron.log');
 
 ?>
